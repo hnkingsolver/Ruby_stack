@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%= stylesheet_link_tag     'application', media: 'all', 'data-turblinks-track' => true %>
+    <%= javascript_include_tag  'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <title>TwoColumnLayout</title>
+</head>
+<body>
+    <div class="col-sm-6"><%= yield :user_table %></div>
+	<div class="col-sm-6"><%= yield :user_form %></div>
+</body>
+</html>

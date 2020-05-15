@@ -1,0 +1,42 @@
+<h1>Welcome, <%= current_user.first_name %>!</h1>
+
+
+<% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+    <p>
+        <%= error %>
+    </p>
+    <% end %>
+<% end %>
+
+<form action='/ideas' method="post">
+<input name="authenticity_token" value='<%= form_authenticity_token %>' type='hidden' />
+<input type='hidden' name='idea[user_id]' value="<%= current_user.id %>">
+<textarea rows='6' cols='80' name='idea[message]' placeholder="Write something..."></textarea>
+<input type='submit' value='Post It!' />
+</form>
+
+<% @ideas.each do |idea| %>
+<table>
+    <tbody>
+        <tr>
+        <td><a href="user/<%= idea.user.id %>/show"> <%= idea.user.first_name %> </a> Says: </td>
+        <td> <%= idea.message %></td>
+            <% if idea.user_id == current_user.id %>
+        <td><a href='/delete/<%=idea.id%>'  data-method='delete'>Delete your idea</a></td>
+            <% end %>
+        </tr>
+        <td>
+            
+            <form action='/likes' method='post'>
+                <input name="authenticity_token" value='<%= form_authenticity_token %>' type='hidden' />
+                <input type='hidden' name='like[idea_id]' value='<%= idea.id %>'>
+                <input type='hidden' name='like[user_id]' value='<%= current_user.id%>'>
+                <input type='submit' value='Like' />
+            </form>
+        </td>
+        <td> <a href='/ideas/<%= idea.id %>/show'><%= idea.users_liked.count %> people liked this </a></td>
+    </tbody>
+</table>
+<hr />
+<% end %>

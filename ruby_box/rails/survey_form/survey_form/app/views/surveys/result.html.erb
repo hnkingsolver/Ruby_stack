@@ -1,0 +1,30 @@
+<fieldset class="green">
+    <% if flash[:count]%>
+	<div id='greenbox'>
+		<p>Thanks for submitting this form! You have submitted this form <%= flash[:count] %> times now.</p>
+	</div>
+	<% end %>
+</fieldset>
+
+<fieldset>
+<h2>Submitted Info</h2>
+<table>
+<tr>
+    <td>Name</td>
+    <td><%= session[:name] %></td>
+</tr>
+<tr>
+    <td>Location</td>
+    <td><%= session[:location] %></td>
+</tr>
+<tr>
+    <td>Favorite Language</td>
+    <td><%= session[:language] %></td>
+</tr>
+<tr>
+    <td>Comment</td>
+    <td><%= session[:comment] %></td>
+</tr>
+</table>
+<a href="/"><input type='submit' value='Go Back'></a>
+</fieldset>

@@ -1,0 +1,16 @@
+# my_enumerable_mau
+module MyEnumerable
+    def my_each
+        for i in 0...self.length
+        yield(self[i])
+        end
+    end
+end
+class Array
+    include MyEnumerable
+end
+
+[1,2,3,4].my_each { |i| puts i } # => 1 2 3 4
+[1,2,3,4].my_each { |i| puts i * 10 } # => 10 20 30 40
+[2,4,6,8].my_each { |i| puts i * 100 } 
+[2,1,6,8].my_each { |i| puts i > 2 } 

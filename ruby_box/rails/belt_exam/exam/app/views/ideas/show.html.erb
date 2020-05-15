@@ -1,0 +1,26 @@
+<h2><%= @idea.user.first_name %> <%= @idea.user.last_name %></h2>
+<h5>
+    "<%= @idea.message %>"
+</h5>
+
+<div class='show' style="margin-top:100px;">
+<h5>People who liked this idea:</h5>
+<table class="table table-striped">
+    <thead>
+        <tr>
+        <th scope="col">Alias</th>
+        <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <% @users.each do |user| %>
+            <% if @idea.users_liked.include?(user) %>
+        <td> <a href="/ideas/user/<%= user.id %>/show"><%= user.alias %></a> </td>
+        <td><%= user.first_name %> <%= user.last_name %></td>
+        </tr>
+            <% end %>
+        <% end %>
+    </tbody>
+</table>
+</div>

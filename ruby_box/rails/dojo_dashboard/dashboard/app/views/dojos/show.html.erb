@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="display: inline-block">
+        <%= @dojo.branch %>
+    </h1>
+    <h4 style="display: inline-block; margin-left:25px;">
+        <a href="/dojos/<%= @dojo.id %>/edit">Edit</a>
+    </h4>
+    <h3>
+        Address: <%= @dojo.street %>
+    </h3>
+    <h3 style="padding-bottom:50px">
+        City: <%= @dojo.city %>  State: <%= @dojo.state %>
+    </h3>
+    <h2>Student Roster</h2>
+    <table class="table table-striped" style="width:700px">
+    <thead>
+            <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+            </tr>
+    </thead>
+    <tbody>
+    <% @students.each do |s| %>
+        <tr>
+        <td> <%=s.first_name%> </td>
+        <td> <%=s.last_name%> </td>
+        <td> <%=s.email%> </td>
+        <td> 
+            <a href='/dojos/<%=@dojo.id%>/students/<%=s.id%>'>Show</a> |
+            <a href='/dojos/<%=@dojo.id%>/students/<%=s.id%>/edit'>Edit</a> |
+            <form action="/dojos/<%= @dojo.id %>/students/<%= s.id %>" method="post">
+					<input type="hidden" name="_method" value="delete">
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"><input type="submit" value="Destroy">
+			</form>
+        </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+<div style="display:inline-block;">
+    <a href="/dojos">Home</a> 
+</div>
+<div style="display:inline-block; margin-left: 500px">
+    <a href="/dojos/<%=@dojo.id%>/students/new">Add a Student!</a> 
+</div>
+
+</body>
+</html>

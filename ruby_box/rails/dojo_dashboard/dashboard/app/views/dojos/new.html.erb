@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>New Dojo</title>
+</head>
+<body>
+    <h1>New Dojo</h1>
+    <form action="/dojos" method="POST">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %> 
+    <div class="row" style="width:600px; padding-bottom:50px;">
+        <div class="col">
+        <input type="text" name="dojo[branch]" class="form-control" placeholder="Dojo Branch">
+        </div>
+        <div class="col">
+        <input type="text" name="dojo[street]" class="form-control" placeholder="Street">
+        </div>
+    </div>
+    <div class="row" style="width:600px">
+        <div class="col">
+        <input type="text" name="dojo[city]" class="form-control" placeholder="City">
+        </div>
+        <div class="col">
+        <input type="text" name="dojo[state]" class="form-control" placeholder="State">
+        </div>
+    </div>
+    <div style="margin-left:215px; margin-top:50px">
+        <button type="submit" class="btn btn-dark">Create New Dojo!</button>
+    </div>
+    </form>
+</body>
+</html>

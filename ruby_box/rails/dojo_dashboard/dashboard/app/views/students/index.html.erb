@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="">
+    <a href="/"><button>Home</button></a>
+    <a href="/edit/<%=@dojo.id%>"><button>Edit</button></a>
+    <h1><%=@dojo.branch%> Dojo</h1>
+    <p><%=@dojo.street%></p>
+    <p><%=@dojo.city%></p>
+    <p><%=@dojo.state%></p>
+    <h2>Student Roster</h2>
+    <table class="table table-striped">
+    <thead>
+            <tr>
+            <th scope="col">Coding Dojo Branch</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            </tr>
+    </thead>
+    <tbody>
+    <% @students.each do |s| %>
+        <tr>
+        <td> <%=s.first_name%> </td>
+        <td> <%=s.last_name%> </td>
+        <td> <%=s.email%> </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+<a href="/dojo/<%=@dojo.id%>/students/new"><button>New Student</button></a>
+</body>
+</html>
+
